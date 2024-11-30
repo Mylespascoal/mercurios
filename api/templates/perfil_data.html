@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Vendedor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0A0A0A; /* Fundo escuro (consistente com a loja) */
+            margin: 0;
+            padding: 0;
+            color: #FFFFFF; /* Texto branco */
+        }
+
+        /* Barra de navegação */
+        .navbar {
+            background-color: #1A1A1A; /* Cor de fundo mais suave que o fundo da página */
+            padding: 15px 20px;
+            transition: background-color 0.3s ease;
+        }
+        .navbar:hover {
+            background-color: #333333; /* Escurecendo a navbar no hover */
+        }
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar-right {
+            display: flex;
+            gap: 15px;
+        }
+        .navbar-right a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .navbar-right a.active {
+            background-color: #14CD37; /* Verde vibrante (consistente com a loja) */
+        }
+        .navbar-right a:hover {
+            background-color: #45a049; /* Verde mais escuro no hover */
+            transform: translateY(-3px); /* Efeito de elevação */
+        }
+
+        /* Mensagem de boas-vindas */
+        .welcome-message {
+            text-align: center;
+            font-size: 1.8em;
+            color: #14CD37; /* Verde vibrante */
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            background-color: #1A1A1A; /* Fundo escuro (consistente com a loja) */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+        }
+        .profile-details {
+            margin-top: 20px;
+        }
+        h3 {
+            color: #14CD37; /* Verde vibrante */
+            font-size: 1.5em;
+            border-bottom: 2px solid #14CD37;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            animation: slideIn 0.5s ease;
+        }
+        .profile-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+            transition: transform 0.3s ease;
+        }
+        .profile-item:hover {
+            transform: translateX(5px); /* Efeito de movimento ao passar o mouse */
+        }
+        .profile-item label {
+            font-weight: bold;
+            color: #14CD37; /* Verde vibrante */
+        }
+        .profile-item span {
+            color: #CCCCCC; /* Cor de texto mais suave */
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-30px);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mensagem de boas-vindas -->
+    <div class="welcome-message">
+        Bem-vindo ao seu Perfil
+    </div>
+
+    <!-- Barra de navegação -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-right">
+                <a href="/loja_data" class="btn logout-button">Loja</a>
+                <a href="/perfil_data" class="btn {% if active_page == 'perfil' %}active{% endif %}">Perfil</a>
+                <a href="/mensagens" class="btn {% if active_page == 'mensagens' %}active{% endif %}">Mensagens</a>
+                <a href="#" class="btn {% if active_page == 'notificacoes' %}active{% endif %}">Notificações <span class="notification-count"></span></a>
+                <a href="/configuracoes" class="btn {% if active_page == 'configuracoes' %}active{% endif %}">Configurações</a>
+                <a href="/ajuda" class="btn ajuda-btn">Ajuda</a>
+                <a href="/logout" class="btn logout-button">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Detalhes do vendedor -->
+        <div class="profile-details">
+            <h3>Informações de Contato</h3>
+            <div class="profile-item">
+                <label>Nome:</label>
+                <span>{{ profile_data['name'] }}</span>
+            </div>
+            <div class="profile-item">
+                <label>Email:</label>
+                <span>{{ profile_data['email'] }}</span>
+            </div>
+            <div class="profile-item">
+                <label>Telefone 1:</label>
+                <span>{{ profile_data['phone_number_1'] }}</span>
+            </div>
+            <div class="profile-item">
+                <label>Telefone 2:</label>
+                <span>{{ profile_data['phone_number_2'] }}</span>
+            </div>
+            <div class="profile-item">
+                <label>Endereço:</label>
+                <span>{{ profile_data['address'] }}</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

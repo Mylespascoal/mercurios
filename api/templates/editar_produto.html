@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Produto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000; /* Fundo preto */
+            color: #FFFFFF; /* Texto branco */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #1a1a1a; /* Fundo escuro para o container */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease;
+        }
+        h1 {
+            text-align: center;
+            color: #14CD37; /* Verde vibrante */
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        label {
+            font-size: 1.2em;
+            color: #CCCCCC; /* Cor do texto das labels */
+            margin-bottom: 10px;
+            display: block;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px 0;
+            border-radius: 5px;
+            border: 1px solid #444; /* Bordas escuras */
+            background-color: #333; /* Fundo escuro para inputs */
+            color: #fff; /* Texto branco */
+            font-size: 1.1em;
+        }
+        input:focus, select:focus {
+            border-color: #14CD37; /* Bordas verdes no focus */
+            outline: none;
+        }
+        button {
+            background-color: #14CD37; /* Verde vibrante para o botão */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #12b52f; /* Verde mais escuro no hover */
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        /* Animação de fade in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Atualizar Produto</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="nome_produto">Selecione o Produto:</label>
+                <select name="nome_produto" id="nome_produto">
+                    {% for produto in produtos %}
+                    <option value="{{ produto[1] }}">{{ produto[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="novo_nome">Novo Nome:</label>
+                <input type="text" name="novo_nome" id="novo_nome" required>
+            </div>
+            <div class="form-group">
+                <label for="novo_preco">Novo Preço:</label>
+                <input type="text" name="novo_preco" id="novo_preco" required>
+            </div>
+            <div class="form-group">
+                <label for="nova_quantidade">Nova Quantidade:</label>
+                <input type="text" name="nova_quantidade" id="nova_quantidade" required>
+            </div>
+            <button type="submit">Atualizar Produto</button>
+        </form>
+    </div>
+</body>
+</html>
